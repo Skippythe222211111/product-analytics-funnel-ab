@@ -1,0 +1,236 @@
+{
+  "simulation": {
+    "is_synthetic": true,
+    "seed": 20261103,
+    "experiment_id": "onboarding_purchase_2026_01",
+    "n_users": 6400,
+    "n_events": 16130,
+    "data_complete_through_day_utc": 20469
+  },
+  "power_plan": {
+    "baseline_rate": 0.12,
+    "absolute_mde": 0.024,
+    "alpha_two_sided": 0.05,
+    "target_power": 0.8,
+    "required_n_per_arm_unrounded": 3119,
+    "planned_n_per_arm": 3200,
+    "planned_total_n": 6400,
+    "achieved_approximate_power_at_planned_n": 0.810012291065875,
+    "method": "двусторонняя нормальная аппроксимация мощности для двух независимых долей"
+  },
+  "funnel": [
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "variant": "control",
+      "n_assigned": 3200,
+      "n_landing_view": 3200,
+      "n_signup": 2258,
+      "n_activation": 1080,
+      "n_purchase": 370
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "variant": "treatment",
+      "n_assigned": 3200,
+      "n_landing_view": 3200,
+      "n_signup": 2191,
+      "n_activation": 1107,
+      "n_purchase": 453
+    }
+  ],
+  "retention_by_cohort": [
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20454,
+      "variant": "control",
+      "cohort_users": 88,
+      "d1_users": 27,
+      "d7_users": 20
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20454,
+      "variant": "treatment",
+      "cohort_users": 75,
+      "d1_users": 26,
+      "d7_users": 14
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20455,
+      "variant": "control",
+      "cohort_users": 237,
+      "d1_users": 59,
+      "d7_users": 64
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20455,
+      "variant": "treatment",
+      "cohort_users": 242,
+      "d1_users": 84,
+      "d7_users": 45
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20456,
+      "variant": "control",
+      "cohort_users": 337,
+      "d1_users": 107,
+      "d7_users": 62
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20456,
+      "variant": "treatment",
+      "cohort_users": 322,
+      "d1_users": 122,
+      "d7_users": 68
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20457,
+      "variant": "control",
+      "cohort_users": 284,
+      "d1_users": 84,
+      "d7_users": 56
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20457,
+      "variant": "treatment",
+      "cohort_users": 330,
+      "d1_users": 102,
+      "d7_users": 53
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20458,
+      "variant": "control",
+      "cohort_users": 342,
+      "d1_users": 102,
+      "d7_users": 61
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20458,
+      "variant": "treatment",
+      "cohort_users": 283,
+      "d1_users": 110,
+      "d7_users": 46
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20459,
+      "variant": "control",
+      "cohort_users": 329,
+      "d1_users": 95,
+      "d7_users": 77
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20459,
+      "variant": "treatment",
+      "cohort_users": 315,
+      "d1_users": 91,
+      "d7_users": 51
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20460,
+      "variant": "control",
+      "cohort_users": 342,
+      "d1_users": 123,
+      "d7_users": 63
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20460,
+      "variant": "treatment",
+      "cohort_users": 331,
+      "d1_users": 103,
+      "d7_users": 50
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20461,
+      "variant": "control",
+      "cohort_users": 235,
+      "d1_users": 78,
+      "d7_users": 38
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20461,
+      "variant": "treatment",
+      "cohort_users": 227,
+      "d1_users": 88,
+      "d7_users": 40
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20462,
+      "variant": "control",
+      "cohort_users": 64,
+      "d1_users": 18,
+      "d7_users": 13
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "cohort_day_utc": 20462,
+      "variant": "treatment",
+      "cohort_users": 66,
+      "d1_users": 23,
+      "d7_users": 8
+    }
+  ],
+  "retention_summary": [
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "variant": "control",
+      "cohort_users": 2258,
+      "d1_users": 693,
+      "d7_users": 454
+    },
+    {
+      "experiment_id": "onboarding_purchase_2026_01",
+      "variant": "treatment",
+      "cohort_users": 2191,
+      "d1_users": 749,
+      "d7_users": 375
+    }
+  ],
+  "experiment": {
+    "primary_metric": "Доля назначенных пользователей с покупкой в течение 7 дней",
+    "primary_event": "purchase",
+    "direction": "treatment − control",
+    "alpha": 0.05,
+    "srm_alpha": 0.001,
+    "srm_statistic": 0.0,
+    "srm_p_value": 1.0,
+    "srm_detected": false,
+    "n_control": 3200,
+    "n_treatment": 3200,
+    "control_purchases": 370,
+    "treatment_purchases": 453,
+    "control_rate": 0.115625,
+    "treatment_rate": 0.1415625,
+    "absolute_difference": 0.025937500000000002,
+    "relative_difference": 0.22432432432432434,
+    "ci_95_newcombe": [
+      0.009538071651011587,
+      0.04234710745970628
+    ],
+    "ci_lower_at_least_mde": false,
+    "z_statistic": 3.09933013896643,
+    "p_value_two_sided": 0.001939587603022014,
+    "statistically_significant": true,
+    "mde_absolute": 0.024,
+    "estimate_at_least_mde": true
+  },
+  "sql_parity": {
+    "funnel": "совпадает: SQL (SQLite, PostgreSQL-совместимый текст) = pandas",
+    "retention": "совпадает: SQL (SQLite, PostgreSQL-совместимый текст) = pandas",
+    "srm_assignment_counts": "совпадает: SQL = pandas"
+  }
+}

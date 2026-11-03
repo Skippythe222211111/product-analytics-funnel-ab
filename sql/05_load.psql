@@ -1,0 +1,5 @@
+-- Запускать из корня проекта через psql после создания схемы:
+-- \i sql/05_load.psql
+-- Файлы CSV создаёт python scripts/run_analysis.py.
+\copy experiment_assignments (experiment_id, user_id, variant, assigned_at, assigned_epoch_s, assigned_day_utc, data_complete_through_day_utc) FROM 'data/generated/assignments.csv' WITH (FORMAT csv, HEADER true)
+\copy events (event_id, experiment_id, user_id, event_name, event_ts, event_epoch_s, event_day_utc) FROM 'data/generated/events.csv' WITH (FORMAT csv, HEADER true)
