@@ -65,6 +65,10 @@ def load(dsn: str) -> None:
         proc = run_psql(dsn, ["-q", "-f", str(SQL / script)])
         if proc.returncode:
             raise SystemExit(f"{script} failed:\n{proc.stderr}")
+    # Make the load idempotent: the workflow may already have loaded the same CSV.
+    proc = run_psql(dsn, ["-q", "-c", "TRUNCATE events, experiment_assignments;"])
+    if proc.returncode:
+        raise SystemExit(f"truncate failed:\n{proc.stderr}")
     proc = run_psql(dsn, ["-q", "-f", str(SQL / "05_load.psql")], stdin=None)
     if proc.returncode:
         raise SystemExit(f"05_load.psql failed:\n{proc.stderr}")
