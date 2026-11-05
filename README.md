@@ -54,7 +54,22 @@ psql $env:DATABASE_URL -f sql/03_retention.sql
 psql $env:DATABASE_URL -f sql/04_srm.sql
 ~~~
 
-Загрузка через psql использует относительные пути из корня проекта. Запросы опираются на UTC epoch/day колонки, чтобы арифметика временных окон была явно определена. Проверка проекта исполняет тот же SQL-текст в SQLite in-memory и сравнивает результат с pandas. В этой среде нет PostgreSQL-сервера, поэтому отдельный прогон на самом PostgreSQL не выполнялся; схема и запросы написаны для PostgreSQL, а SQL-агрегации используют совместимые выражения.
+Загрузка через psql использует относительные пути из корня проекта. Запросы опираются на UTC epoch/day колонки, чтобы арифметика временных окон была явно определена.
+
+### Сверка SQL и Python на реальном PostgreSQL
+
+Проект проверен на PostgreSQL 16–18: схема создаётся, CSV загружаются, все три запроса исполняются без ошибок, а результаты совпадают с Python до последней строки.
+
+~~~powershell
+python scripts/run_analysis.py
+psql $env:DATABASE_URL -f sql/01_schema.sql
+psql $env:DATABASE_URL -f sql/05_load.psql
+python scripts/verify_sql_postgres.py --dsn "host=127.0.0.1 port=5432 user=postgres dbname=postgres"
+~~~
+
+Скрипт `scripts/verify_sql_postgres.py` исполняет `sql/02_funnel.sql`, `sql/03_retention.sql` и `sql/04_srm.sql` через `psql`, сравнивает строки воронки, 18 когорт удержания и размеры групп с `reports/results.json`. В GitHub Actions то же самое выполняется в job `postgres` на сервисном контейнере `postgres:16` (`.github/workflows/ci.yml`).
+
+Дополнительно в наборе тестов остаётся быстрая проверка того же SQL-текста в SQLite in-memory — она не заменяет прогон на PostgreSQL, а ловит синтаксические регрессии за секунды.
 
 ## Структура
 

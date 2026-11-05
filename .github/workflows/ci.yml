@@ -1,0 +1,54 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: python tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+
+  postgres:
+    name: postgres parity
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGPASSWORD: postgres
+      PGCLIENTENCODING: UTF8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - name: Generate reproducible synthetic data
+        run: python scripts/run_analysis.py
+      - name: Create schema and load data into PostgreSQL
+        run: |
+          psql -h localhost -U postgres -d postgres -v ON_ERROR_STOP=1 -f sql/01_schema.sql
+          psql -h localhost -U postgres -d postgres -v ON_ERROR_STOP=1 -f sql/05_load.psql
+      - name: Compare PostgreSQL results with the Python analysis
+        run: |
+          python scripts/verify_sql_postgres.py \
+            --dsn "host=localhost port=5432 user=postgres password=postgres dbname=postgres"
